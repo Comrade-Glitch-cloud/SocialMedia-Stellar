@@ -1,5 +1,9 @@
 version: 0.2
 
+env:
+  image: aws/codebuild/standard:5.0
+  compute_type: BUILD_GENERAL1_SMALL
+
 phases:
   install:
     runtime-versions:

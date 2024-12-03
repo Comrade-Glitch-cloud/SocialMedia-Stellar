@@ -5,14 +5,14 @@ body {
   .solarsystem-outer {
     height: 300px;
     width: 100%;
-    overflow: auto; /* Ensure no content is hidden */
+    overflow: auto;
   }
   
   #solarsystem {
     position: relative;
-    margin: 0 auto; /* Center the solar system */
+    margin: 0 auto;
     width: 100%;
-    opacity: 1; /* Ensure it's fully visible */
+    opacity: 1;
   }
   
   #sun {
@@ -22,7 +22,7 @@ body {
     position: absolute;
     left: 250px;
     margin-top: 250px;
-    opacity: 1; /* Ensure it's fully visible */
+    opacity: 1;
   }
   
   /* ORBIT LINES */

@@ -10,7 +10,7 @@ SECRET_KEY = (
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.01','localhost','stellar-x23328231.eu-west-1.elasticbeanstalk.com',
+ALLOWED_HOSTS = ['127.0.01','172.31.3.163', 'stellar-x23328231.eu-west-1.elasticbeanstalk.com', 'localhost',
     '72b87ce5b8f04ee6b9316d63a6d485c2.vfs.cloud9.eu-west-1.amazonaws.com'
 ]
 

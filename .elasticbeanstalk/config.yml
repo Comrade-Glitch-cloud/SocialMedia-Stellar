@@ -2,6 +2,8 @@ branch-defaults:
   main:
     environment: stellar-x23328231
     group_suffix: null
+  master:
+    environment: stellar-x23328231
 global:
   application_name: stellar
   branch: null

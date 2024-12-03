@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stellar Post</title>
+</head>
+<body>
+    <div class="container">
+        <div class="post media">
+            <h3>{{ post.message_html|safe }}</h3>
+            <div class="media-body">
+                <h5 class="media-heading">
+                    <a href="{% url 'stellar_posts:for_user' username=post.user.username %}">@{{ post.user.username }}</a>
+                </h5>
+                <time class="time">
+                    <a href="{% url 'stellar_posts:single' username=post.user.username pk=post.pk %}">{{ post.created_at }}</a>
+                </time>
+                <div class="media-footer">
+                    {% if user.is_authenticated and post.user == user %}
+                    <a href="{% url 'stellar_posts:delete' pk=post.pk %}" title="delete" class="btn btn-simple-light">
+                        <span class="glyphicon glyphicon-lighte text-light" aria-hidden="true"></span>
+                        <span class="text-danger icon-label">REMOVE</span>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

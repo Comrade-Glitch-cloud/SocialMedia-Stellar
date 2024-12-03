@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1>Update Your Cadet Profile</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ cadet_form.as_p }}
+        <button type="submit" class="btn btn-light">Make Changes</button>
+    </form>
+    <div class="profile-picture-container">
+        {% if cadet.cadet_picture_thumbnail %}
+        <img src="{{ cadet.cadet_picture_thumbnail.url }}" alt="Cadet Picture of {{ cadet.user.username }}"
+             style="width: 150px; 
+                    height: 150px; 
+                    border-radius: 50%; 
+                    object-fit: cover; 
+                    border: 2px solid #ddd; 
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin: 20px 0;">
+        {% else %}
+        <img src="{% static 'stellar/images/Avatar.png' %}" alt="Default Cadet Picture"
+             style="width: 150px; 
+                    height: 150px; 
+                    border-radius: 50%; 
+                    object-fit: cover; 
+                    border: 2px solid #ddd; 
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin: 20px 0;">
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

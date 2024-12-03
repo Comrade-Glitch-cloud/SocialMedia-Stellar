@@ -1,0 +1,21 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+    commands:
+      - echo "Upgrading pip and installing dependencies..."
+      - pip install --upgrade pip
+      - pip install -r requirements.txt pylint
+  pre_build:
+    commands:
+      - echo "Verifying Python version..."
+      - python --version
+  build:
+    commands:
+      - echo "Running Pylint on all Python files..."
+      - pylint $CODEBUILD_SRC_DIR/*.py || true
+      - pylint $CODEBUILD_SRC_DIR/stellar/*.py || true
+artifacts:
+  files:
+    - '**/*'

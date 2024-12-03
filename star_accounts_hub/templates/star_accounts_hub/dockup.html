@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load bootstrap5 %}
+
+{% block content %}
+<div class="container">
+    <h1>Become a Stellar Member</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" class="btn btn-light" value="Dock">
+    </form>
+    <p>
+        Already a Member ? Then, <a href="{% url 'star_accounts_hub:dockin' %}">Dock In</a>
+    </p>
+</div>
+{% endblock %}

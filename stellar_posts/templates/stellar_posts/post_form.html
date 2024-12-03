@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+{% extends "stellar_posts/post_base.html" %}
+{% load bootstrap5 %}
+{% block post_content %}
+    <h4>Create your new Post</h4>
+    <form id="postForm" action="{% url 'stellar_posts:create' %}" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" value="Post" class="btn btn-primary btn-large-light">
+    </form>
+{% endblock %}

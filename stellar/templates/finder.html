@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2> @Results for "{{ query }}"</h2>
+    
+    <h3>#Stellar_Posts#</h3>
+    <ul>
+        {% for post in posts %}
+            <li><a href="{% url 'stellar_posts:single' post.user.username post.pk %}">{{ post.message }}</a></li>
+        {% empty %}
+            <li>Posts not Found!!!</li>
+        {% endfor %}
+    </ul>
+
+    <h3>#Stellar_Groups#</h3>
+    <ul>
+        {% for group in groups %}
+            <li><a href="{% url 'stellar_groups:single' group.slug %}">{{ group.name }}</a></li>
+        {% empty %}
+            <li>Groups are not Found!!!</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

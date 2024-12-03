@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Stellar</title>
+    <link rel="stylesheet" href="{% static 'stellar/css/master.css' %}">
+    <link rel="stylesheet" href="{% static 'stellar/css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <style>
+        .solar-system-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+        #solarsystem {
+            position: absolute;
+            top: 0;
+            left: 8%;
+            transform: translateX(-50%);
+        }
+        .profile-picture-small {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">Stellar</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-primary mx-1" href="{% url 'stellar_posts:create' %}">Stellar_Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-primary mx-1" href="{% url 'stellar_groups:all' %}">Stellar_Groups</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-primary mx-1" href="{% url 'stellar_groups:create' %}">Create Group</a>
+                        </li>
+                        <li class="nav-item">
+                            <form class="d-flex" method="GET" action="{% url 'stellarsearch' %}">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query">
+                                <button class="btn btn-outline-primary" type="submit">Search</button>
+                            </form>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-primary mx-1" href="{% url 'star_accounts_hub:cadetdetails' %}">Avatar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-primary mx-1" href="{% url 'star_accounts_hub:cadetprofile' %}">
+                                {% if user.avatar_picture %}
+                                    <img src="{{ user.avatar_picture.url }}" alt="Profile Picture" class="profile-picture-small">
+                                {% else %}
+                                    <img src="{% static 'stellar/images/Avatar.png' %}" alt="Default Profile Picture" class="profile-picture-small">
+                                {% endif %}
+                                Edit Your Avatar
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-primary mx-1" href="{% url 'star_accounts_hub:dockout' %}">Dock Out</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-primary mx-1" href="{% url 'star_accounts_hub:dockin' %}">Dock In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-primary mx-1" href="{% url 'star_accounts_hub:dockup' %}">Register</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mycontent">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <div class="solar-system-container" id="solar-system">
+        <div id="solarsystem">
+            <div id="sun"></div>
+            <div class="planet" id="mercury"></div>
+            <div class="planet" id="venus"></div>
+            <div class="planet" id="earth">
+                <div id="moon"></div>
+            </div>
+            <div class="planet" id="mars"></div>
+            <div class="planet" id="jupiter"></div>
+            <div class="planet" id="saturn"></div>
+            <div class="planet" id="uranus"></div>
+            <div class="planet" id="neptune"></div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

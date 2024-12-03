@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends "stellar_groups/group_base.html" %}  
+{% block pregroup %}
+<h1>Welcome to {{ group.name }}</h1>
+<h2>Cadet Count: {{ group.members.count }}</h2>
+<div class="container">
+    {% if user in group.members.all %}
+    <a href="{% url 'stellar_groups:leave' slug=group.slug %}" class="btn btn-lg btn-fill btn-light"> 
+        <span class="glyphicon glyphicon-remove-circle"></span> Leave
+    </a>
+    {% else %}
+    <a href="{% url 'stellar_groups:join' slug=group.slug %}" class="btn btn-lg btn-fill btn-light">
+        <span class="glyphicon glyphicon-ok-circle"></span> Join
+    </a>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block group_content %}
+<div class="col-md-8">
+    {% if group.posts.count == 0 %}
+    <h2>No postings yet</h2>
+    {% else %}
+    {% for post in group.posts.all %}
+    {% include "stellar_posts/_post.html" %}
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

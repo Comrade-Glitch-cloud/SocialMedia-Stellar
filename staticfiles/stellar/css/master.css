@@ -47,7 +47,7 @@ body {
     margin-top: 200px;
     -webkit-animation: orbit 7.23s linear infinite;
     animation: orbit 7.23s linear infinite;
-    opacity: 1; /* Ensure it's fully visible */
+    opacity: 1;
   }
   
   #venus {

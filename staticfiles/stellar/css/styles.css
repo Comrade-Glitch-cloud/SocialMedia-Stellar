@@ -1,18 +1,18 @@
-/* NAVIGATION STYLES */
+/* NAV STYLES */
 .nav-link.btn {
   margin: 0.2em;
   font-size: 14px;
   font-weight: 600;
   border-radius: 5px;
   transition: all 0.2s ease-in-out;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   font-family: 'Montserrat', sans-serif;
 }
 
 .nav-link.btn:hover {
   background-color: #0056b3;
   color: #fff;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .btn-primary {
@@ -23,196 +23,4 @@
 .btn-primary:hover {
   background-color: #0056b3;
   border-color: #0056b3;
-}
-
-/* KEYFRAMES AND ANIMATIONS */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.fade-in {
-  animation: fadeIn 2s ease-in-out;
-}
-
-/* BACKGROUND STYLES */
-body {
-  background-image: url('stellar/static/images/space.jpg');
-  background-size: cover; /* Cover the entire page */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* No repeating */
-  position: relative;
-}
-
-body::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Dark overlay */
-  z-index: -1; /* Behind content */
-}
-
-/* RESPONSIVE DESIGN */
-@media (max-width: 768px) {
-  .nav-link.btn {
-    font-size: 12px;
-    padding: 0.5em;
-  }
-  .btn-primary {
-    width: 100%;
-    margin-bottom: 0.5em;
-  }
-}
-
-/* SOLAR SYSTEM STYLES */
-.solarsystem-outer {
-  height: 300px;
-  width: 100%;
-  overflow: auto; /* Ensure no content is hidden */
-}
-
-#solarsystem {
-  position: relative;
-  margin: 0 auto; /* Center the solar system */
-  width: 100%;
-  opacity: 1; /* Ensure it's fully visible */
-}
-
-#sun {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  position: absolute;
-  left: 250px;
-  margin-top: 250px;
-  opacity: 1; /* Ensure it's fully visible */
-}
-
-/* ORBIT LINES */
-#mercury, #venus, #earth, #moon, #mars, #jupiter, #saturn, #uranus, #neptune {
-  border: 1px dashed #000;
-  border-radius: 50%;
-  opacity: 1; /* Ensure it's fully visible */
-}
-
-/* PLANET ORBITS */
-#mercury {
-  width: 200px;
-  height: 200px;
-  position: absolute;
-  left: 200px;
-  margin-top: 200px;
-  -webkit-animation: orbit 7.23s linear infinite;
-  animation: orbit 7.23s linear infinite;
-}
-
-#venus {
-  width: 300px;
-  height: 300px;
-  position: absolute;
-  left: 150px;
-  top: 150px;
-  -webkit-animation: orbit 18.45s linear infinite;
-  animation: orbit 18.45s linear infinite;
-}
-
-#earth {
-  width: 400px;
-  height: 400px;
-  position: absolute;
-  left: 100px;
-  top: 100px;
-  -webkit-animation: orbit 30s linear infinite;
-  animation: orbit 30s linear infinite;
-}
-
-#moon {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  position: absolute;
-  left: 155px;
-  top: -18px;
-  -webkit-animation: orbit 2.4s linear infinite;
-  animation: orbit 2.4s linear infinite;
-}
-
-#mars {
-  width: 500px;
-  height: 500px;
-  position: absolute;
-  left: 50px;
-  top: 50px;
-  -webkit-animation: orbit 56.43s linear infinite;
-  animation: orbit 56.43s linear infinite;
-}
-
-#jupiter {
-  width: 700px;
-  height: 700px;
-  position: absolute;
-  left: -45px;
-  top: -45px;
-  -webkit-animation: orbit 355.8s linear infinite;
-  animation: orbit 355.8s linear infinite;
-}
-
-#saturn {
-  width: 900px;
-  height: 900px;
-  position: absolute;
-  left: -140px;
-  top: -140px;
-  -webkit-animation: orbit 883.8s linear infinite;
-  animation: orbit 883.8s linear infinite;
-}
-
-#uranus {
-  width: 1100px;
-  height: 1100px;
-  position: absolute;
-  left: -235px;
-  top: -235px;
-  -webkit-animation: orbit 2520.3s linear infinite;
-  animation: orbit 2520.3s linear infinite;
-}
-
-#neptune {
-  width: 1300px;
-  height: 1300px;
-  position: absolute;
-  left: -320px;
-  top: -320px;
-  -webkit-animation: orbit 4944s linear infinite;
-  animation: orbit 4944s linear infinite;
-}
-
-/* PLANET COLORS */
-#sun, #mercury:after, #venus:after, #earth:after, #moon:after, #jupiter:after, #saturn:after, #uranus:after, #neptune:after {
-  background: #000;
-}
-
-#mars:after {
-  background: red;
-}
-
-#mercury:after, #venus:after, #earth:after, #moon:after, #mars:after, #jupiter:after, #saturn:after, #uranus:after, #neptune:after {
-  border-radius: 50%;
-  margin-left: 40%;
-}
-
-/* ORBIT ANIMATIONS */
-@-webkit-keyframes orbit {
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
-}
-
-@keyframes orbit {
-  100% {
-    transform: rotate(360deg);
-  }
 }

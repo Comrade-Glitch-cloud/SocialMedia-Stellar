@@ -5,21 +5,14 @@ phases:
     runtime-versions:
       python: 3.9
     commands:
-      - echo "Upgrading pip and installing dependencies..."
       - pip install --upgrade pip
+      # Install dependencies needed for running the static analysis
       - pip install -r requirements.txt pylint
   pre_build:
     commands:
-      - echo "Verifying Python version..."
       - python --version
-  build:
-    commands:
-      - echo "Running Pylint on all Python files..."
       - pylint $CODEBUILD_SRC_DIR/*.py || true
-      - pylint $CODEBUILD_SRC_DIR/stellar/*.py || true
-  post_build:
-    commands:
-      - echo "Build completed."
+      - pylint $CODEBUILD_SRC_DIR/demoproj/*.py || true
 artifacts:
   files:
     - '**/*'

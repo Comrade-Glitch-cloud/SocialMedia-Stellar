@@ -17,7 +17,7 @@ git push origin main
 git push origin main --force
 
 user name: Comrade-Glitch-cloud
-password: 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
+password: 
 
 git status
 

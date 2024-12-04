@@ -7,7 +7,8 @@
     {% if cadet %}
     <div class="cadet-picture-container" style="margin: 20px 0;">
         {% if cadet.avatar_picture_thumbnail %}
-            <img src="{{ cadet.avatar_picture_thumbnail.url }}" alt="{{ cadet.user.username }}'s Cadet Picture" 
+            <img src="{{ cadet.avatar_picture_thumbnail.url }}" 
+                 alt="{{ cadet.user.username }}'s Cadet" 
                  style="width: 150px; 
                         height: 150px; 
                         border-radius: 50%; 
@@ -16,7 +17,8 @@
                         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
                         margin-bottom: 20px;">
         {% else %}
-            <img src="{% static 'stellar/images/Avatar.png' %}" alt="Default Cadet Picture" 
+            <img src="{% static 'stellar/images/Avatar.png' %}" 
+                 alt="Default Cadet" 
                  style="width: 150px; 
                         height: 150px; 
                         border-radius: 50%; 

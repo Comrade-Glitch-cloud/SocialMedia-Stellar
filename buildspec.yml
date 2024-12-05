@@ -6,7 +6,6 @@ phases:
       python: 3.9
     commands:
       - pip install --upgrade pip
-      # Install Sonar Scanner (if not pre-installed in your build environment)
       - curl -sSLo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856.zip
       - unzip sonar-scanner.zip -d /usr/local
       - export PATH=$PATH:/usr/local/sonar-scanner-4.8.0.2856/bin
@@ -14,16 +13,11 @@ phases:
   build:
     commands:
       - echo "Starting SonarCloud analysis..."
-      # Set up environment variables for SonarCloud
-      - export SONAR_TOKEN=<your-sonarcloud-token>  # Replace with your actual token
-      - export SONAR_HOST_URL="https://sonarcloud.io"
-      # Run SonarCloud scanner
       - sonar-scanner \
           -Dsonar.projectKey=<your-project-key> \
-          -Dsonar.organization=<your-organization-name> \
+          -Dsonar.organization=<your-organization> \
           -Dsonar.sources=. \
-          -Dsonar.python.version=3.9 \
-          -Dsonar.host.url=$SONAR_HOST_URL \
+          -Dsonar.host.url="https://sonarcloud.io" \
           -Dsonar.login=$SONAR_TOKEN
 
 artifacts:

@@ -6,13 +6,26 @@ phases:
       python: 3.9
     commands:
       - pip install --upgrade pip
-      # Install dependencies needed for running the static analysis
-      - pip install -r requirements.txt pylint
-  pre_build:
+      # Install Sonar Scanner (if not pre-installed in your build environment)
+      - curl -sSLo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856.zip
+      - unzip sonar-scanner.zip -d /usr/local
+      - export PATH=$PATH:/usr/local/sonar-scanner-4.8.0.2856/bin
+
+  build:
     commands:
-      - python --version
-      - pylint $CODEBUILD_SRC_DIR/*.py || true
-      - pylint $CODEBUILD_SRC_DIR/demoproj/*.py || true
+      - echo "Starting SonarCloud analysis..."
+      # Set up environment variables for SonarCloud
+      - export SONAR_TOKEN=<your-sonarcloud-token>  # Replace with your actual token
+      - export SONAR_HOST_URL="https://sonarcloud.io"
+      # Run SonarCloud scanner
+      - sonar-scanner \
+          -Dsonar.projectKey=<your-project-key> \
+          -Dsonar.organization=<your-organization-name> \
+          -Dsonar.sources=. \
+          -Dsonar.python.version=3.9 \
+          -Dsonar.host.url=$SONAR_HOST_URL \
+          -Dsonar.login=$SONAR_TOKEN
+
 artifacts:
   files:
     - '**/*'

@@ -5,20 +5,29 @@ phases:
     runtime-versions:
       python: 3.9
     commands:
+      - echo "Upgrading pip..."
       - pip install --upgrade pip
+      - echo "Downloading SonarCloud scanner..."
       - curl -sSLo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856.zip
+      - echo "Unzipping SonarCloud scanner..."
       - unzip sonar-scanner.zip -d /usr/local
-      - export PATH=$PATH:/usr/local/sonar-scanner-4.8.0.2856/bin
+      - echo "Setting up environment variables..."
+      - export PATH="$PATH:/usr/local/sonar-scanner-4.8.0.2856/bin"
+
+  pre_build:
+    commands:
+      - echo "Verifying Python version..."
+      - python --version
 
   build:
     commands:
       - echo "Starting SonarCloud analysis..."
       - sonar-scanner \
-          -Dsonar.projectKey=<your-project-key> \
-          -Dsonar.organization=<your-organization> \
+          -Dsonar.projectKey=Comrade-Glitch-cloud_SocialMedia-Stellar \
+          -Dsonar.organization=comrade-glitch-cloud \
           -Dsonar.sources=. \
           -Dsonar.host.url="https://sonarcloud.io" \
-          -Dsonar.login=$SONAR_TOKEN
+          -Dsonar.login=$sonar_token
 
 artifacts:
   files:

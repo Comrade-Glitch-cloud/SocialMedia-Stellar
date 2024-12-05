@@ -22,7 +22,6 @@ phases:
       - python --version
       - echo "Running Pylint static analysis..."
       - pylint $CODEBUILD_SRC_DIR/*.py || true
-      - pylint $CODEBUILD_SRC_DIR/SocialMedia-Stellar/**/*.py || true
       - pylint $CODEBUILD_SRC_DIR/stellar/**/*.py || true
 
   build:
@@ -35,7 +34,7 @@ phases:
           -Dsonar.organization=comrade-glitch-cloud \
           -Dsonar.sources=. \
           -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.login="$sonar_token"
+          -Dsonar.login=$sonar_token
 
 artifacts:
   files:

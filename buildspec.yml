@@ -13,22 +13,32 @@ phases:
       - curl -sSLo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856.zip
       - echo "Unzipping SonarCloud scanner..."
       - unzip sonar-scanner.zip -d /usr/local
-      - echo "Setting up SonarCloud environment..."
+      - echo "Adding SonarCloud scanner to PATH..."
       - export PATH="$PATH:/usr/local/sonar-scanner-4.8.0.2856/bin"
 
   pre_build:
     commands:
       - echo "Verifying Python version..."
       - python --version
-      - echo "Running pylint static analysis..."
-      - pylint $CODEBUILD_SRC_DIR/*.py || true # Static analysis for top-level Python files
-      - pylint $CODEBUILD_SRC_DIR/demoproj/*.py || true # Static analysis for Django project files
-      - pylint $CODEBUILD_SRC_DIR/movies/*.py || true # Static analysis for app-level files
+      - echo "Running Pylint static analysis..."
+      - echo "Analyzing top-level Python files..."
+      - pylint $CODEBUILD_SRC_DIR/*.py || true
+      - echo "Analyzing Django project files..."
+      - pylint $CODEBUILD_SRC_DIR/demoproj/*.py || true
+      - echo "Analyzing app-level files..."
+      - pylint $CODEBUILD_SRC_DIR/movies/*.py || true
 
   build:
     commands:
+      - echo "Checking if SonarCloud token is set..."
+      - if [ -z "$sonar_token" ]; then echo "SonarCloud token not set. Skipping SonarCloud analysis."; exit 0; fi
       - echo "Running SonarCloud analysis..."
-      - sonar-scanner -Dsonar.projectKey=Comrade-Glitch-cloud_SocialMedia-Stellar -Dsonar.organization=comrade-glitch-cloud -Dsonar.sources=. -Dsonar.host.url="https://sonarcloud.io" -Dsonar.login=$sonar_token
+      - sonar-scanner \
+          -Dsonar.projectKey=Comrade-Glitch-cloud_SocialMedia-Stellar \
+          -Dsonar.organization=comrade-glitch-cloud \
+          -Dsonar.sources=. \
+          -Dsonar.host.url="https://sonarcloud.io" \
+          -Dsonar.login=$sonar_token
 
 artifacts:
   files:

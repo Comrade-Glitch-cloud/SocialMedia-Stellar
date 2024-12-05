@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from braces.views import SelectRelatedMixin
 from django.contrib.auth import get_user_model
-from django.contrib.auth.mixins import LoginRequiredMixin  # Import this mixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import StellarPost
 from django.contrib import messages
 from django.http import Http404
@@ -32,7 +32,6 @@ class UserStellarPosts(generic.ListView):
         context['post_user'] = self.post_user
         return context
 
-
 class StellarPostDetail(SelectRelatedMixin, generic.DetailView):
     model = StellarPost
     select_related = ('user', 'group')
@@ -56,8 +55,7 @@ class CreateStellarPost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateVi
         self.object = form.save(commit=False)
         self.object.user = self.request.user
         self.object.save()
-        return self.render_to_response(self.get_context_data(form=self.get_form_class()()))
-
+        return super().form_valid(form)
 
 class DeleteStellarPost(LoginRequiredMixin, SelectRelatedMixin, generic.DeleteView):
     model = StellarPost

@@ -10,12 +10,21 @@ SECRET_KEY = (
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.01', 'stellar-x23328231.eu-west-1.elasticbeanstalk.com', 'localhost', '172.31.3.163','ec2-52-30-97-171.eu-west-1.compute.amazonaws.com',
-    '72b87ce5b8f04ee6b9316d63a6d485c2.vfs.cloud9.eu-west-1.amazonaws.com','52.30.97.171','.elasticbeanstalk.com',
+ALLOWED_HOSTS = [
+    '127.0.01',
+    'stellar-x23328231.eu-west-1.elasticbeanstalk.com',
+    'localhost',
+    '172.31.3.163',
+    'ec2-52-30-97-171.eu-west-1.compute.amazonaws.com',
+    '72b87ce5b8f04ee6b9316d63a6d485c2.vfs.cloud9.eu-west-1.amazonaws.com',
+    '52.30.97.171',
+    '.elasticbeanstalk.com',
+    '34.243.235.209',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://stellar-x23328231.eu-west-1.elasticbeanstalk.com',
-    'https://72b87ce5b8f04ee6b9316d63a6d485c2.vfs.cloud9.eu-west-1.amazonaws.com'
+CSRF_TRUSTED_ORIGINS = [
+    'http://stellar-x23328231.eu-west-1.elasticbeanstalk.com',
+    'https://72b87ce5b8f04ee6b9316d63a6d485c2.vfs.cloud9.eu-west-1.amazonaws.com',
 ]
 
 INSTALLED_APPS = [
@@ -31,6 +40,7 @@ INSTALLED_APPS = [
     'stellar_groups',
     'stellar_posts',
     'stellar',
+    'storages',  # Add storages for S3 support
 ]
 
 MIDDLEWARE = [
@@ -90,14 +100,26 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
+# Static and Media Files
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# AWS S3 Configuration
+AWS_STORAGE_BUCKET_NAME = 'x23328231-static'
+AWS_S3_REGION_NAME = 'eu-west-1'
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+# Use S3 for static files
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# Media files
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 LOGIN_REDIRECT_URL = 'test'
 LOGOUT_REDIRECT_URL = 'thanks'

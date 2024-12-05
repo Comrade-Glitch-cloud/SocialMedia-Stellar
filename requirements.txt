@@ -7,3 +7,5 @@ django-imagekit==5.0.0
 misaka==2.1.1
 pilkit==3.0
 pillow==11.0.0
+django-storages
+boto3

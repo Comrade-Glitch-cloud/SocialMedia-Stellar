@@ -3,34 +3,18 @@
 {% load bootstrap5 %}
 
 {% block content %}
-<div class="container" style="text-align: center;">
-    <h1>Details of {{ cadet.user.username }}'s Cadet Profile</h1>
+<div class="container">
+    <h1 class="text-center">Details of {{ cadet.user.username }}'s Cadet Profile</h1>
     {% if cadet %}
-    <div class="cadet-picture-container" style="margin: 20px 0;">
-        {% if cadet.avatar_picture_thumbnail %}
-            <img src="{{ cadet.avatar_picture_thumbnail.url }}" 
-                 alt="{{ cadet.user.username }}'s Cadet" 
-                 style="width: 150px; 
-                        height: 150px; 
-                        border-radius: 50%; 
-                        object-fit: cover; 
-                        border: 2px solid #ddd; 
-                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-                        margin-bottom: 20px;">
+    <div class="text-center mb-4">
+        {% if cadet.cadet_picture_thumbnail %}
+            <img src="{{ cadet.cadet_picture_thumbnail.url }}" alt="{{ cadet.user.username }}'s Cadet" class="img-thumbnail profile-picture">
         {% else %}
-            <img src="{% static 'stellar/images/Avatar.png' %}" 
-                 alt="Default Cadet" 
-                 style="width: 150px; 
-                        height: 150px; 
-                        border-radius: 50%; 
-                        object-fit: cover; 
-                        border: 2px solid #ddd; 
-                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-                        margin-bottom: 20px;">
+            <img src="{% static 'stellar/images/Avatar.png' %}" alt="Default Cadet" class="img-thumbnail profile-picture">
         {% endif %}
     </div>
-    <div class="cadet-details" style="text-align: left;">
-        <p><strong>Stellarname:</strong> {{ cadet.stellarname }}</p>
+    <div class="text-left mx-auto" style="max-width: 600px;">
+        <p><strong>Stellar Name:</strong> {{ cadet.stellarname }}</p>
         <p><strong>Email:</strong> {{ cadet.user.email }}</p>
         <p><strong>First Name:</strong> {{ cadet.user.first_name }}</p>
         <p><strong>Last Name:</strong> {{ cadet.user.last_name }}</p>

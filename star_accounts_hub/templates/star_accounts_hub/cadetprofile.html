@@ -4,19 +4,37 @@
 
 {% block content %}
 <div class="container">
-    <h1>Update Your Cadet Profile</h1>
-    <form method="post" enctype="multipart/form-data" class="update-profile-form">
-        {% csrf_token %}
-        {{ cadet_form.as_p }}
-        <button type="submit" class="btn btn-primary">Make Changes</button>
-    </form>
-    <div class="profile-picture-container">
+    <h1 class="text-center">Update Your Cadet Profile</h1>
+    <div class="text-center mt-4">
         {% if cadet.cadet_picture_thumbnail %}
-            <img src="{{ cadet.cadet_picture_thumbnail.url }}" alt="{{ cadet.user.username }}'s Cadet"
-                 class="profile-picture">
+            <img src="{{ cadet.cadet_picture_thumbnail.url }}" alt="{{ cadet.user.username }}'s Cadet" class="img-thumbnail profile-picture">
         {% else %}
-            <img src="{% static 'stellar/images/Avatar.png' %}" alt="Default Cadet" class="profile-picture">
+            <img src="{% static 'stellar/images/Avatar.png' %}" alt="Default Cadet" class="img-thumbnail profile-picture">
         {% endif %}
     </div>
+    <form method="post" enctype="multipart/form-data" class="mt-4">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="id_stellarname" class="form-label">Stellar Name</label>
+            <input type="text" name="stellarname" class="form-control" id="id_stellarname" value="{{ cadet.stellarname }}">
+        </div>
+        <div class="mb-3">
+            <label for="id_email" class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" id="id_email" value="{{ cadet.user.email }}">
+        </div>
+        <div class="mb-3">
+            <label for="id_first_name" class="form-label">First Name</label>
+            <input type="text" name="first_name" class="form-control" id="id_first_name" value="{{ cadet.user.first_name }}">
+        </div>
+        <div class="mb-3">
+            <label for="id_last_name" class="form-label">Last Name</label>
+            <input type="text" name="last_name" class="form-control" id="id_last_name" value="{{ cadet.user.last_name }}">
+        </div>
+        <div class="mb-3">
+            <label for="id_cadet_picture" class="form-label">Cadet Picture</label>
+            <input type="file" name="cadet_picture" class="form-control" id="id_cadet_picture">
+        </div>
+        <button type="submit" class="btn btn-primary">Make Changes</button>
+    </form>
 </div>
 {% endblock %}

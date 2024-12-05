@@ -21,6 +21,16 @@ phases:
 
   build:
     commands:
+      - echo "Running your build steps..."
+      # Add your specific build commands here
+      # Example:
+      - echo "Installing dependencies..."
+      - pip install -r requirements.txt
+      - echo "Running tests..."
+      - pytest
+
+  post_build:
+    commands:
       - echo "Starting SonarCloud analysis..."
       - sonar-scanner \
           -Dsonar.projectKey=Comrade-Glitch-cloud_SocialMedia-Stellar \

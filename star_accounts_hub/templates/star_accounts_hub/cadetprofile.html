@@ -11,10 +11,10 @@
     </form>
     <div class="profile-picture-container">
         {% if cadet.cadet_picture_thumbnail %}
-            <img src="{{ cadet.cadet_picture_thumbnail.url }}" alt="Cadet Picture of {{ cadet.user.username }}"
+            <img src="{{ cadet.cadet_picture_thumbnail.url }}" alt="{{ cadet.user.username }}'s Cadet"
                  class="profile-picture">
         {% else %}
-            <img src="{% static 'stellar/images/Avatar.png' %}" alt="Default Cadet Picture" class="profile-picture">
+            <img src="{% static 'stellar/images/Avatar.png' %}" alt="Default Cadet" class="profile-picture">
         {% endif %}
     </div>
 </div>

@@ -6,7 +6,7 @@
 <body>
     <div class="container">
         <div class="post media">
-            <h3>{{ post.message_html }}</h3> <!-- Removed |safe to enable auto-escaping -->
+            <h3>{{ post.message_html }}</h3>
             <div class="media-body">
                 <h5 class="media-heading">
                     <a href="{% url 'stellar_posts:for_user' username=post.user.username %}">@{{ post.user.username }}</a>

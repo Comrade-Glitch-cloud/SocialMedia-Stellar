@@ -1,14 +1,14 @@
 from pathlib import Path
 import os
+from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
-SECRET_KEY = (
-    'django-insecure-y(rbr=_ana)ybg6cjlq@0+g7n(hw=p!qvhaea%d+2%o5sz^+tv'
-)
 
-DEBUG = True
+SECRET_KEY = config('DJANGO_SECRET_KEY', default='fallback-secret-key-for-dev')
+DEBUG = config('DEBUG', default=False, cast=bool)
+
 
 ALLOWED_HOSTS = [
     '127.0.01',

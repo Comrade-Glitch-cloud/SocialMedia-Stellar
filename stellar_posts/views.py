@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from braces.views import SelectRelatedMixin
 from django.contrib.auth import get_user_model
-from django.contrib.auth.mixins import LoginRequiredMixin  # Import this mixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import StellarPost
 from django.contrib import messages
 from django.http import Http404

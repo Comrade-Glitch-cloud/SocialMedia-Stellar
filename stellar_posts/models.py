@@ -25,4 +25,3 @@ class StellarPost(models.Model):
 
     class Meta:
         ordering = ['-created_at']
-        # Removed unique_together constraint

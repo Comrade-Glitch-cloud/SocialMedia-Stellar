@@ -9,10 +9,9 @@ body {
     position: absolute;
     left: 250px;
     margin-top: 250px;
-    opacity: 0.5; /* Incorrect value - opacity should be between 0 and 1 */
+    opacity: 0.5;
 }
 
-/* ORBIT LINES */
 #mercury,
 #venus,
 #earth,
@@ -26,7 +25,6 @@ body {
     border-radius: 50%;
 }
 
-/* Individual Orbit Lines */
 #mercury {
     width: 212px;
     height: 213px;
@@ -35,7 +33,7 @@ body {
     margin-top: 200px;
     -webkit-animation: orbit 7.23s linear infinite;
     animation: orbit 7.23s linear infinite;
-    opacity: 1; /* Ensure it's fully visible */
+    opacity: 1;
 }
 
 #venus {
@@ -132,7 +130,6 @@ body {
     border-radius: 50%;
 }
 
-/* ORBIT ANIMATION */
 @-webkit-keyframes orbit {
     100% {
         -webkit-transform: rotate(360deg);
@@ -145,7 +142,6 @@ body {
     }
 }
 
-/* PLANETS */
 #mercury:after,
 #venus:after,
 #earth:after,

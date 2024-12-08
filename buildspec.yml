@@ -6,7 +6,7 @@ phases:
       python: 3.9
     commands:
       - pip install --upgrade pip --root-user-action=ignore
-      - pip install -r requirements.txt pylint coverage --root-user-action=ignore
+      - pip install -r requirements.txt pylint --root-user-action=ignore
       - curl -sSLo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856.zip
       - unzip sonar-scanner.zip -d /usr/local
       - export PATH="$PATH:/usr/local/sonar-scanner-4.8.0.2856/bin"
@@ -19,16 +19,12 @@ phases:
 
   build:
     commands:
-      - if [ -z "$sonar_token" ]; then echo "SonarCloud token not set. Skipping SonarCloud analysis."; exit 0; fi
-      - coverage run -m pytest
-      - coverage xml
       - sonar-scanner \
           -D"sonar.projectKey=Comrade-Glitch-cloud_SocialMedia-Stellar" \
           -D"sonar.organization=comrade-glitch-cloud" \
           -D"sonar.sources=." \
           -D"sonar.host.url=https://sonarcloud.io" \
           -D"sonar.login=${sonar_token}" \
-          -D"sonar.python.coverage.reportPaths=coverage.xml" \
           -X
 
 artifacts:

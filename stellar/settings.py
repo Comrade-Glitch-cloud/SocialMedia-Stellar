@@ -8,7 +8,7 @@ SECRET_KEY = (
     'django-insecure-y(rbr=_ana)ybg6cjlq@0+g7n(hw=p!qvhaea%d+2%o5sz^+tv'
 )
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.01',
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'stellar_groups',
     'stellar_posts',
     'stellar',
-    'storages',  # Add storages for S3 support
+    'storages',
 ]
 
 MIDDLEWARE = [

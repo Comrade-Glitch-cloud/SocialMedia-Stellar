@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
-from django.views.decorators.http import require_http_methods
 from .models import CadetProfile
 from django.contrib.auth.models import User
 
@@ -13,7 +12,6 @@ class DockUp(CreateView):
     template_name = 'star_accounts_hub/dockup.html'
 
 @login_required
-@require_http_methods(["GET", "POST"])
 def cadetprofile(request):
     # Ensure cadet profile exists for the user
     cadet_profile, created = CadetProfile.objects.get_or_create(user=request.user, defaults={'stellarname': request.user.username})
@@ -37,9 +35,7 @@ def cadetprofile(request):
     return render(request, 'star_accounts_hub/cadetprofile.html', context)
 
 @login_required
-@require_http_methods(["GET"])
 def cadetdetails(request):
-    # Ensure cadet profile exists for the user
     cadet_profile, created = CadetProfile.objects.get_or_create(user=request.user, defaults={'stellarname': request.user.username})
 
     return render(request, 'star_accounts_hub/cadetdetails.html', {'cadet': cadet_profile})

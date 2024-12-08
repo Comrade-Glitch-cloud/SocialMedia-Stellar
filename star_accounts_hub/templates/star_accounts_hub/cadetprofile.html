@@ -19,19 +19,15 @@
             <input type="text" name="stellarname" class="form-control" id="id_stellarname" value="{{ cadet.stellarname }}">
         </div>
         <div class="mb-3">
-            <label for="id_email" class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" id="id_email" value="{{ cadet.user.email }}">
+            <input type="email" name="email" class="form-control" id="id_email" placeholder="Email" value="{{ cadet.user.email }}">
         </div>
         <div class="mb-3">
-            <label for="id_first_name" class="form-label">First Name</label>
-            <input type="text" name="first_name" class="form-control" id="id_first_name" value="{{ cadet.user.first_name }}">
+            <input type="text" name="first_name" class="form-control" id="id_first_name" placeholder="First Name" value="{{ cadet.user.first_name }}">
         </div>
         <div class="mb-3">
-            <label for="id_last_name" class="form-label">Last Name</label>
-            <input type="text" name="last_name" class="form-control" id="id_last_name" value="{{ cadet.user.last_name }}">
+            <input type="text" name="last_name" class="form-control" id="id_last_name" placeholder="Last Name" value="{{ cadet.user.last_name }}">
         </div>
         <div class="mb-3">
-            <label for="id_cadet_picture" class="form-label">Cadet Picture</label>
             <input type="file" name="cadet_picture" class="form-control" id="id_cadet_picture">
         </div>
         <button type="submit" class="btn btn-primary">Make Changes</button>

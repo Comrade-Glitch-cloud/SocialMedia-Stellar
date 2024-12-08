@@ -17,17 +17,16 @@ phases:
       - pylint $CODEBUILD_SRC_DIR/*.py || true
       - pylint $CODEBUILD_SRC_DIR/stellar/**/*.py || true
 
-  build:
-    commands:
-      - sonar-scanner \
-          -D"sonar.projectKey=Comrade-Glitch-cloud_SocialMedia-Stellar" \
-          -D"sonar.organization=comrade-glitch-cloud" \
-          -D"sonar.sources=." \
-          -D"sonar.host.url=https://sonarcloud.io" \
-          -D"sonar.login=${sonar_token}" \
-          -D"sonar.python.version=3.9" \
-          -D"sonar.exclusions=**/stellar/settings.py" \
-          -X
+build:
+  commands:
+    - sonar-scanner \
+        -D"sonar.projectKey=Comrade-Glitch-cloud_SocialMedia-Stellar" \
+        -D"sonar.organization=comrade-glitch-cloud" \
+        -D"sonar.sources=." \
+        -D"sonar.host.url=https://sonarcloud.io" \
+        -D"sonar.login=${sonar_token}" \
+        -D"sonar.python.version=3.9 \
+        -X
 
 artifacts:
   files:

@@ -9,4 +9,4 @@ pilkit==3.0
 pillow==11.0.0
 django-storages
 boto3
-python-decouple-3.8
+python-decouple

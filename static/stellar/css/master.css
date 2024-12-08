@@ -9,7 +9,7 @@ body {
     position: absolute;
     left: 250px;
     margin-top: 250px;
-    opacity: 1.5;
+    opacity: 0.5; /* Incorrect value - opacity should be between 0 and 1 */
 }
 
 /* ORBIT LINES */
@@ -26,6 +26,7 @@ body {
     border-radius: 50%;
 }
 
+/* Individual Orbit Lines */
 #mercury {
     width: 212px;
     height: 213px;
@@ -145,124 +146,6 @@ body {
 }
 
 /* PLANETS */
-#mercury:after {
-    content: " ";
-    width: 12px;
-    height: 13px;
-    position: absolute;
-    top: -5px;
-}
-
-#venus:after {
-    content: " ";
-    width: 22px;
-    height: 23px;
-    position: absolute;
-    top: 85px;
-    right: 0;
-}
-
-#earth:after {
-    content: " ";
-    width: 26px;
-    height: 25px;
-    position: absolute;
-    top: -12px;
-}
-
-#moon:after {
-    content: " ";
-    width: 8.5px;
-    height: 8px;
-    position: absolute;
-    top: -12px;
-}
-
-#mars:after {
-    content: " ";
-    width: 12px;
-    height: 12px;
-    position: absolute;
-    top: -4px;
-}
-
-#jupiter:after {
-    content: " ";
-    width: 112px;
-    height: 113px;
-    position: absolute;
-    top: 220px;
-    right: -40px;
-}
-
-#saturn:after {
-    content: " ";
-    width: 82px;
-    height: 83px;
-    position: absolute;
-    top: 340px;
-    right: -35px;
-}
-
-#uranus:after {
-    content: " ";
-    width: 62px;
-    height: 63px;
-    position: absolute;
-    top: 480px;
-    right: -30px;
-}
-
-#neptune:after {
-    content: " ";
-    width: 62px;
-    height: 63px;
-    position: absolute;
-    top: 580px;
-    right: -30px;
-}
-
-/* PLANET COLOR */
-#sun {
-    background: rgb(188, 0, 0);
-}
-
-#mercury:after {
-    background: rgb(99, 99, 99);
-}
-
-#venus:after {
-    background: rgb(250, 210, 90);
-}
-
-#earth:after {
-    background: rgb(0, 51, 127);
-}
-
-#moon:after {
-    background: rgb(0, 0, 0);
-}
-
-#jupiter:after {
-    background: rgb(229, 229, 229);
-}
-
-#saturn:after {
-    background: rgb(255, 211, 89);
-}
-
-#uranus:after {
-    background: rgb(20, 247, 240);
-}
-
-#neptune:after {
-    background: #001997;
-}
-
-#mars:after {
-    background: rgb(160, 75, 0);
-}
-
 #mercury:after,
 #venus:after,
 #earth:after,
@@ -272,6 +155,80 @@ body {
 #saturn:after,
 #uranus:after,
 #neptune:after {
+    content: " ";
+    position: absolute;
     border-radius: 50%;
     margin-left: 40%;
+}
+
+#mercury:after {
+    width: 12px;
+    height: 13px;
+    top: -5px;
+    background: rgb(99, 99, 99);
+}
+
+#venus:after {
+    width: 22px;
+    height: 23px;
+    top: 85px;
+    right: 0;
+    background: rgb(250, 210, 90);
+}
+
+#earth:after {
+    width: 26px;
+    height: 25px;
+    top: -12px;
+    background: rgb(0, 51, 127);
+}
+
+#moon:after {
+    width: 8.5px;
+    height: 8px;
+    top: -12px;
+    background: rgb(0, 0, 0);
+}
+
+#mars:after {
+    width: 12px;
+    height: 12px;
+    top: -4px;
+    background: rgb(160, 75, 0);
+}
+
+#jupiter:after {
+    width: 112px;
+    height: 113px;
+    top: 220px;
+    right: -40px;
+    background: rgb(229, 229, 229);
+}
+
+#saturn:after {
+    width: 82px;
+    height: 83px;
+    top: 340px;
+    right: -35px;
+    background: rgb(255, 211, 89);
+}
+
+#uranus:after {
+    width: 62px;
+    height: 63px;
+    top: 480px;
+    right: -30px;
+    background: rgb(20, 247, 240);
+}
+
+#neptune:after {
+    width: 62px;
+    height: 63px;
+    top: 580px;
+    right: -30px;
+    background: #001997;
+}
+
+#sun {
+    background: rgb(188, 0, 0);
 }

@@ -6,14 +6,14 @@
 <div class="container">
     <h1 class="text-center">Details of {{ cadet.user.username }}'s Cadet Profile</h1>
     {% if cadet %}
-    <div class="text-center mb-4">
-        {% if cadet.cadet_picture_thumbnail %}
-            <img src="{{ cadet.cadet_picture_thumbnail.url }}" alt="{{ cadet.user.username }}'s Cadet" class="img-thumbnail profile-picture">
+    <div class="cadet-picture-container text-center mb-4">
+        {% if cadet.cadet_picture %}
+            <img src="{{ cadet.cadet_picture.url }}" alt="{{ cadet.user.username }}'s Cadet" class="profile-picture img-thumbnail">
         {% else %}
-            <img src="{% static 'stellar/images/Avatar.png' %}" alt="Default Cadet" class="img-thumbnail profile-picture">
+            <img src="{% static 'stellar/images/Avatar.png' %}" alt="Default Cadet" class="profile-picture img-thumbnail">
         {% endif %}
     </div>
-    <div class="text-left mx-auto" style="max-width: 600px;">
+    <div class="cadet-details text-left mx-auto" style="max-width: 600px;">
         <p><strong>Stellar Name:</strong> {{ cadet.stellarname }}</p>
         <p><strong>Email:</strong> {{ cadet.user.email }}</p>
         <p><strong>First Name:</strong> {{ cadet.user.first_name }}</p>

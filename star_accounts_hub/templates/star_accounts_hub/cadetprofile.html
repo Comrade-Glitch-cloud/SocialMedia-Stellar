@@ -5,13 +5,6 @@
 {% block content %}
 <div class="container">
     <h1 class="text-center">Update Your Cadet Profile</h1>
-    <div class="text-center mt-4">
-        {% if cadet.cadet_picture_thumbnail %}
-            <img src="{{ cadet.cadet_picture_thumbnail.url }}" alt="{{ cadet.user.username }}'s Cadet" class="img-thumbnail profile-picture">
-        {% else %}
-            <img src="{% static 'stellar/images/Avatar.png' %}" alt="Default Cadet" class="img-thumbnail profile-picture">
-        {% endif %}
-    </div>
     <form method="post" enctype="multipart/form-data" class="mt-4">
         {% csrf_token %}
         <div class="mb-3">

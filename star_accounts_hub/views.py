@@ -13,7 +13,6 @@ class DockUp(CreateView):
 
 @login_required
 def cadetprofile(request):
-    # Ensure cadet profile exists for the user
     cadet_profile, created = CadetProfile.objects.get_or_create(user=request.user, defaults={'stellarname': request.user.username})
 
     if request.method == 'POST':

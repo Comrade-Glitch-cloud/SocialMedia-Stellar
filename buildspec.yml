@@ -25,6 +25,7 @@ build:
         -D"sonar.sources=." \
         -D"sonar.host.url=https://sonarcloud.io" \
         -D"sonar.login=${sonar_token}" \
+        -D"sonar.python.version=3.9 \
         -X
 
 artifacts:

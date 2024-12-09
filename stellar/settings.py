@@ -9,6 +9,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = config('DJANGO_SECRET_KEY', default='fallback-secret-key-for-dev')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.01',
@@ -102,18 +103,15 @@ USE_TZ = True
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Static files (CSS, JavaScript, etc.)
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-# AWS S3 settings for static files
 AWS_STORAGE_BUCKET_NAME = 'x23328231-static'
 AWS_S3_REGION_NAME = 'eu-west-1'
 
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-# Media files (user uploads)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'

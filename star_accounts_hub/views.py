@@ -17,7 +17,7 @@ class DockUp(CreateView):
         try:
             user = form.save(commit=False)
             password = self.request.POST.get('password')
-            user.set_password(password)  # Ensure password is hashed
+            user.set_password(password)
             user.save()
             return redirect(self.success_url)
         except IntegrityError:

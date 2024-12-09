@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 {% extends "base.html" %}
 {% load static %}
 {% load bootstrap5 %}
@@ -9,8 +10,6 @@
     <div class="cadet-picture-container text-center mb-4">
         {% if cadet.cadet_picture %}
             <img src="{{ cadet.cadet_picture.url }}" alt="{{ cadet.user.username }}'s Cadet" class="profile-picture img-thumbnail">
-        {% else %}
-            <img src="{% static 'stellar/images/Avatar.png' %}" alt="Default Cadet" class="profile-picture img-thumbnail">
         {% endif %}
     </div>
     <div class="cadet-details text-left mx-auto" style="max-width: 600px;">
